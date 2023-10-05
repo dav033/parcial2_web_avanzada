@@ -8,7 +8,7 @@ from Config.db import db, ma, app
 
 app.register_blueprint(employee_routes, url_prefix = "/api" )
 app.register_blueprint(production_routes, url_prefix = "/api")
-@app.route("/hola")
+@app.route("/ ")
 def index():
     return "Hola Mundo"
 
