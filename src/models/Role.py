@@ -6,7 +6,7 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     CompensationPerProduct = db.Column(db.Float)
-    employee = db.relationship('Employee', backref='roles', lazy=True)
+    user = db.relationship('User', backref='roles', lazy=True)
     
     def __init__(self, name , role):
         self.name = name
