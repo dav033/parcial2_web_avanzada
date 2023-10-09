@@ -1,5 +1,5 @@
 from Config.db import db, ma, app
-from models.Products import Product
+from models.Product import Product
 from models.User import User
 
 class Production(db.Model):

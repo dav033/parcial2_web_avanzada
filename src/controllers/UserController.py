@@ -18,7 +18,7 @@ def create_user():
       password = data.get("password")
       new_user = user_service.create_user(
         name, role, email, password)
-      return "Usuario Creado", 201
+    return "The user has been created", 201
 
 @user_routes.route("/search_user", methods=["GET"])
 def search_user():
