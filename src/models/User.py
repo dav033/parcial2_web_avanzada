@@ -25,13 +25,6 @@ class User(db.Model):
             'roleID': self.roleID
         }
 
-    def to_json(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "email": self.email,
-            "roleID": self.roleID
-        }
 
 
 with app.app_context():
