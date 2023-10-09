@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, redirect, render_template
-from controllers.EmployeeController import employee_routes
+from controllers.UserController import employee_routes
 from controllers.ProductionController import production_routes
 from controllers.AuthController import auth_routes
 from Config.db import db, ma, app

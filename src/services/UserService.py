@@ -1,5 +1,5 @@
 from Config.db import db, ma, app
-from models.Employee import Employee
+from models.User import Employee
 
 class EmployeeService:
     def create_employee(self, name , roleID, email, password):

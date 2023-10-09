@@ -1,5 +1,5 @@
 from flask import request, jsonify, Blueprint
-from services.EmployeeService import EmployeeService
+from services.UserService import EmployeeService
 from Security import Security
 
 employee_service = EmployeeService()

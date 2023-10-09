@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from models.Employee import Employee
+from models.User import Employee
 from Security import Security
 
 

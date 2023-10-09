@@ -1,6 +1,6 @@
 from Config.db import db, ma, app
 from models.Products import Product
-from models.Employee import Employee
+from models.User import Employee
 
 class Production(db.Model):
     __tablename__ = "packages"
