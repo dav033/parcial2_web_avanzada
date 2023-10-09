@@ -9,13 +9,21 @@ class Employee(db.Model):
     name = db.Column(db.String(50))
     email = db.Column(db.String(50))
     password = db.Column(db.String(50))
-    roleID = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
+    roleID = db.Column(db.Integer, db.ForeignKey("roles.id"), nullable=False)
 
     def __init__(self, name, roleID, email, password):
         self.name = name
         self.roleID = roleID
         self.email = email
         self.password = password
+
+    def to_json(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "email": self.email,
+            "roleID": self.roleID
+        }
 
 
 with app.app_context():
@@ -24,4 +32,4 @@ with app.app_context():
 
 class EmployeeSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'name', 'roleID', 'email', 'password')
+        fields = ("id", "name", "roleID", "email", "password")
