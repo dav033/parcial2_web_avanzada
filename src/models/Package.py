@@ -1,6 +1,6 @@
 from Config.db import db, ma, app
 from models.Products import Product
-from models.User import Employee
+from models.User import User
 
 class Production(db.Model):
     __tablename__ = "packages"
@@ -10,7 +10,7 @@ class Production(db.Model):
     total_package_value = db.Column(db.Float)
     products_count = db.Column(db.Integer)
     product = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('employees.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     
     
     def __init__(self, date, product, user_id, total_package_value, products_count):

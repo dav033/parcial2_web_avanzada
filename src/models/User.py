@@ -2,8 +2,8 @@ from Config.db import db, ma, app
 from models.Role import Role
 
 
-class Employee(db.Model):
-    __tablename__ = "employees"
+class User(db.Model):
+    __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
@@ -16,6 +16,14 @@ class Employee(db.Model):
         self.roleID = roleID
         self.email = email
         self.password = password
+        
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'email': self.email,
+            'roleID': self.roleID
+        }
 
     def to_json(self):
         return {
@@ -30,6 +38,6 @@ with app.app_context():
     db.create_all()
 
 
-class EmployeeSchema(ma.Schema):
+class UserSchema(ma.Schema):
     class Meta:
         fields = ("id", "name", "roleID", "email", "password")
