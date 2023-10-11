@@ -24,3 +24,8 @@ def search_user():
     user_id = request.args.get('user_id')
     user = user_service.search_user(user_id)
     return user.to_json(), 200
+
+@user_routes.route("/get_users", methods=["GET"])
+def get_users():
+    users = user_service.get_users()
+    return jsonify(users), 200
