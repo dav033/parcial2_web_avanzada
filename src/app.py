@@ -33,11 +33,10 @@ def token_middleware():
     else:
         token_data = Security.verify_token(request.headers)
 
-        if not token_data['token_valid'] and current_route not in excluded_routes:
+        if current_route not in excluded_routes and not token_data['token_valid']:
             return "Invalid Token", 401
 
-        if current_route not in no_admin_routes and token_data['role'] != "4":
-
+        if current_route not in no_admin_routes and token_data['role'] != 4 and current_route not in excluded_routes:
             return "Admin required", 401
 
 
