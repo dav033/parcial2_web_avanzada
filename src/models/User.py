@@ -8,7 +8,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     email = db.Column(db.String(50))
-    password = db.Column(db.String(50))
+    password = db.Column(db.String(255))
     roleID = db.Column(db.Integer, db.ForeignKey("roles.id"), nullable=False)
 
     def __init__(self, name, roleID, email, password):
