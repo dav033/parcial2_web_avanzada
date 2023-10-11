@@ -9,3 +9,7 @@ class UserService:
         return new_user
     def search_user(self, user_id):
         return User.query.get(user_id)
+
+    def get_users(self):
+        users = User.query.all()
+        return users
