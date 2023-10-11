@@ -30,15 +30,23 @@ class Security():
                 try:
                     decoded_token = jwt.decode(
                         encoded_token, "clavesecreta", algorithms=["HS256"])
-                    data = {
+
+                    return {
                         "token_valid": True,
                         "role": decoded_token['role']
                     }
-
-                    return data
                 except jwt.ExpiredSignatureError:
-                    return False
+                    return {
+                        "token_valid": False,
+                        "role": None
+                    }
                 except jwt.InvalidTokenError:
-                    return False
+                    return {
+                        "token_valid": False,
+                        "role": None
+                    }
 
-        return False
+        return {
+            "token_valid": False,
+            "role": None
+        }
