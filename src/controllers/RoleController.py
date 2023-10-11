@@ -20,6 +20,7 @@ def create_role():
     compensation_per_product = data.get("compensationPerProduct")
     new_role = role_service.create_role(
         name, compensation_per_product)
+    return "The role has been created", 201
 
 
 @role_routes.route("/modify_role", methods=["PUT"])
