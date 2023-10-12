@@ -13,16 +13,17 @@ def create_or_update_package():
     if (token_succes):
         data = request.get_json()
         user_id = data.get("user_id")
+        count = data.get("count")
         package_product_type = data.get("product_type")
         try:
             packageExist = package_service.getPackage(user_id,package_product_type)
             if packageExist:
-                package = package_service.UpdatePackage(packageExist)
+                package_service.UpdatePackage(packageExist,count)
                 return jsonify({
                     "Stauts": 200,
-                    "Message": package.to_json()
-                })
-            package_service.createPackage(user_id, package_product_type)
+                    }),200
+            package_service.createPackage(user_id, package_product_type,count)
+
             return jsonify({
                 "Stauts": 201,
                 "Message": "Package Created"

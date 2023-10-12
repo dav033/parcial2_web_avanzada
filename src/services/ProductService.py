@@ -20,3 +20,6 @@ class ProductService:
         product.value = value
         db.session.commit()
         return product
+    def getProduct(self,product_id):
+        product = Product.query.get(product_id)
+        return product
