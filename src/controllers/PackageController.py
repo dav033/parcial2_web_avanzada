@@ -28,8 +28,5 @@ def create_or_update_package():
                 "Stauts": 201,
                 "Message": "Package Created"
             })
-
         except Exception as error:
             return jsonify({"Status": 500, "Error": str(error)}), 500
-    else:
-        return "Invalid Token", 401

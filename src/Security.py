@@ -9,10 +9,12 @@ class Security():
 
     @classmethod
     def generate_token(cls, authenticate_user):
+
         payload = {
             "iat": datetime.datetime.now(tz=cls.timezone),
             "exp": datetime.datetime.now(tz=cls.timezone) + datetime.timedelta(days=1),
             'name': authenticate_user.name,
+            'role': authenticate_user.roleID,
         }
 
         return jwt.encode(payload, "clavesecreta", algorithm="HS256")
@@ -26,12 +28,25 @@ class Security():
 
             if encoded_token:
                 try:
-                    jwt.decode(
+                    decoded_token = jwt.decode(
                         encoded_token, "clavesecreta", algorithms=["HS256"])
-                    return True
-                except jwt.ExpiredSignatureError:
-                    return False
-                except jwt.InvalidTokenError:
-                    return False
 
-        return False
+                    return {
+                        "token_valid": True,
+                        "role": decoded_token['role']
+                    }
+                except jwt.ExpiredSignatureError:
+                    return {
+                        "token_valid": False,
+                        "role": None
+                    }
+                except jwt.InvalidTokenError:
+                    return {
+                        "token_valid": False,
+                        "role": None
+                    }
+
+        return {
+            "token_valid": False,
+            "role": None
+        }
