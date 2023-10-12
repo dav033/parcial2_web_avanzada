@@ -22,3 +22,6 @@ class RoleService:
             return role
         else:
             return None
+    def getRole(self,role_id):
+        role = Role.query.get(role_id)
+        return role
