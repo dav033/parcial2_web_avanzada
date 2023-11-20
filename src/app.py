@@ -6,6 +6,10 @@ from controllers.AuthController import auth_routes
 from controllers.PackageController import package_routes
 from Config.db import db, ma, app
 from Security import Security
+from flask_cors import CORS
+
+CORS(app, resources={r"/*": {"origins": "*"}})
+
 
 app.register_blueprint(auth_routes, url_prefix="/api")
 app.register_blueprint(user_routes, url_prefix="/api")
