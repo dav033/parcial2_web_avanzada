@@ -10,7 +10,8 @@ class PackageService:
         return package
     def UpdatePackage(self, package:Packages,count):
         total_count=package.products_count+count
-        if total_count > 12:
+        print(total_count)
+        if total_count >= 12:
             package.products_count=12
             package.is_complete=1
             package.total_package_value = utils.getTotalPackagevalue(package.product,package.user_id)
@@ -38,3 +39,7 @@ class PackageService:
             db.session.add(newPackage)
             db.session.commit()
         return newPackage
+    
+    def getPackages(self):
+        packages = Packages.query.all()
+        return packages

@@ -15,6 +15,7 @@ def getTotalPackagevalue(productid:Product,user_id):
         
         roleBonus:Role = role.compensationPerProduct
         product:Product = product_service.getProduct(productid)
+        print("A" , product.value , roleBonus)
 
         totalPackageValue = (product.value * roleBonus)*12
 

@@ -16,3 +16,8 @@ class UserService:
     def get_users(self):
         users = User.query.all()
         return users
+    def delete_user(self, user_id):
+        user = User.query.get(user_id)
+        db.session.delete(user)
+        db.session.commit()
+        return user

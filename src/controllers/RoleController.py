@@ -23,7 +23,7 @@ def create_role():
     return "The role has been created", 201
 
 
-@role_routes.route("/modify_role", methods=["PUT"])
+@role_routes.route("/modify_role", methods=["POST"])
 def modify_role():
     data = request.get_json()
     role_id = data.get("rolId")
@@ -32,4 +32,4 @@ def modify_role():
     modified_role = role_service.modify_role(role_id,
                                              name, compensation_per_product)
     if modified_role != None:
-        return "The role has been modified", 201
+        return "The role has been modified", 200

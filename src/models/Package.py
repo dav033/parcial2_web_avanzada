@@ -10,6 +10,7 @@ class Packages(db.Model):
     total_package_value = db.Column(db.Float)
     products_count = db.Column(db.Integer)
     is_complete = db.Column(db.Boolean)
+    updatedAt = db.Column(db.DateTime)
     product = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     
@@ -30,6 +31,7 @@ class Packages(db.Model):
             'total_package_value': self.total_package_value,
             'products_count': self.products_count,
             'is_complete': self.is_complete,
+            'updatedAt': self.updatedAt
         }
         
 with app.app_context():
@@ -37,4 +39,4 @@ with app.app_context():
     
 class ProductionSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'date', 'product', 'user_id', 'total_package_value', 'products_count','is_compleate')
+        fields = ('id', 'date', 'product', 'user_id', 'total_package_value', 'products_count','is_compleate', 'updatedAt')

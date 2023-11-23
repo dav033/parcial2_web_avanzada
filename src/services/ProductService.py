@@ -4,10 +4,8 @@ from models.Product import Product
 class ProductService:
     def get_products(self):
         products = Product.query.all()
-        product_list = []
-        for product in products:
-            product_list.append(product.to_json())
-        return product_list
+     
+        return products
     def create_product(self, name, description, value):
         new_product = Product(name, description, value)
         db.session.add(new_product)

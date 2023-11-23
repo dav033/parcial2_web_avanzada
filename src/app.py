@@ -28,8 +28,9 @@ def token_middleware():
 
     current_route = request.path
 
-    excluded_routes = ["/api/login"]
-    no_admin_routes = ["/api/create_or_update_package"]
+    excluded_routes = ["/api/get_users", "/api/login", "/api/create_user", "/api/get_products",
+                       "/api/create_product", "/api/create_or_update_package", "/api/get_packages", "/api/delete_user", "/api/get_roles" , "/api/modify_role"]
+    no_admin_routes = [""]
     token = request.headers.get("Authorization")
 
     if token == None and current_route not in excluded_routes:

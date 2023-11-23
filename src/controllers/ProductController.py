@@ -9,7 +9,7 @@ product_routes = Blueprint("product_routes", __name__)
 @product_routes.route("/get_products", methods=["GET"])
 def get_products():
     products = product_service.get_products()
-    return jsonify(products), 200
+    return {'products':list(map(lambda product: product.to_json() , products)) }, 200
 
 
 @product_routes.route("/create_product", methods=["POST"])

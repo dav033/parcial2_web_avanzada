@@ -28,4 +28,13 @@ def search_user():
 @user_routes.route("/get_users", methods=["GET"])
 def get_users():
     users = user_service.get_users()
-    return jsonify(users), 200
+    return {"users": list(map(lambda user: user.to_json(), users))}, 200
+
+@user_routes.route("/delete_user", methods=["POST"])
+def delete_user():
+    data = request.get_json()
+
+    user_id = data.get('id')
+    user = user_service.delete_user(user_id)
+    return "The user has been deleted", 200
+     
